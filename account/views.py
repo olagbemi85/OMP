@@ -99,7 +99,7 @@ class Register(View):
 
 class UserLoginView(View):
     form_class = UserLoginForm
-    template_name = 'home.html'
+    template_name = 'account/login.html'
 
     def dispatch(self, request, *args, **kwargs):
         if request.user.is_authenticated:
