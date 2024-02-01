@@ -1,0 +1,120 @@
+{%  load static %}
+<section>
+    <!-- Left Sidebar -->
+    <aside id="leftsidebar" class="sidebar">
+        <!-- User Info -->
+        {% if user.is_authenticated %}
+        <div class="user-info">
+            {% if user.profile_pic %}
+            <div class="image">
+                <img src="{{user.profile_pic.url}}" width="48" height="48" alt="User" />
+            </div>
+            {% else %}
+            <div class="image">
+                <img src="{% static 'images/person.png'%}" width="48" height="48" alt="User" />
+            </div>
+            {% endif %}
+            <div class="info-container">
+                <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ user.first_name }}</div>
+                <div class="email">{{ user.email }}</div>
+                <div class="btn-group user-helper-dropdown">
+                    <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
+                    <ul class="dropdown-menu pull-right" style="border-radius: 10px !important; border: 2px;">
+                        <li><a href="{% url 'account:profile' %}"><i class="material-icons">person</i>Profile</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="{% url 'account:edit-profile' %}"><i class="material-icons">group</i>Edit Profile</a></li>
+                        {%if user.is_superuser%}
+                        <li><a href="{% url 'admin:index' %}"><i class="material-icons">settings</i>Admin Area</a></li>
+                        {%endif%}
+                        {%if user.is_staff%}
+                        <li><a href="{% url 'admins:home' %}"><i class="material-icons">settings</i>Staff Area</a></li>
+                        {%endif%}
+                        <!--<li><a href="javascript:void(0);"><i class="material-icons">favorite</i>Likes</a></li>-->
+                        <li role="separator" class="divider"></li>
+                        <li><a href="{% url 'account:logout' %}"><i class="material-icons">input</i>Sign Out</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        {% else %}
+        <div class="header">
+            Please Login or Register
+        </div>
+        {%endif%}
+        <!-- #User Info -->
+        <!-- Menu -->
+        <div class="menu">
+            <ul class="list">
+                <!--<li class="header">MAIN NAVIGATION</li> -->
+                {% if user.is_authenticated %}
+                <li>
+                    <a href="{% url 'meterapp:home' %}">
+                        <i class="material-icons">home</i>
+                        <span>Home</span>
+                    </a>
+                </li>
+                {% if user.is_staff %}
+                <li>
+                    <a href="{% url 'admins:home' %}">
+                        <i class="material-icons">home</i>
+                        <span>Application Received</span>
+                    </a>
+                </li>
+                {%endif%}
+                <li>
+                    <a href="{% url 'meterapp:new_application' %}" >
+                        <i class="material-icons">assignment</i>
+                        <span>Meter Application(new)</span>
+                    </a>
+                </li>
+                <!--<li>
+                    <a href="{% url 'meterapp:application' %}" class="menu-toggle">
+                        <i class="material-icons">assignment</i>
+                        <span>Meter Application(old)</span>
+                    </a>
+                </li>-->
+                {%else%}
+                <li>
+                    <a href="{% url 'account:register' %}">
+                        <i class="material-icons">layers</i>
+                        <span>Register</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url 'account:userlogin' %}">
+                        <i class="material-icons">layers</i>
+                        <span>Login</span>
+                    </a>
+                </li>
+                {%endif%}
+                <li>
+                    <a href="javascript:void(0);" class="menu-toggle">
+                        <i class="material-icons">map</i>
+                        <span>Navigation</span>
+                    </a>
+                    <ul class="ml-menu">
+                        <li>
+                            <a href="https://infocheck.abujaelectricity.com/">Tarrif Information</a>
+                        </li>
+                        <li>
+                            <a href="https://pay4energy.abujaelectricity.com/login">Buy Electricity Token</a>
+                        </li>
+                        <li>
+                            <a href="https://webportal.abujaelectricity.com:8443/WEBPORTAL-NIGERIA/#/login">Customer Service</a>
+                        </li>
+                    </ul>
+                </li>
+                
+            </ul>
+        </div>
+        <!-- #Menu -->
+        <!-- Footer -->
+        <div class="legal">
+            <div class="copyright">
+                &copy; 2023 <a href="https://www.abujaelectricity.com/">AEDC</a>.
+            </div>
+        </div>
+        <!-- #Footer -->
+    </aside>
+
+</section>

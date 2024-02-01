@@ -1,0 +1,210 @@
+
+{% extends "../base_power_system.html" %}
+{%  load static %}
+{% block title %}SPS(power){% endblock %}  <!-- Smart Power System -->
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/style3.css' %}" type="text/css">
+<link rel="stylesheet" href="{% static 'flags/sprite.css' %}" />
+
+<!-- Page Loader -->
+
+{% include '../component/loader.html' %}
+<!-- #END# Page Loader -->
+ <!-- Top Bar -->
+{% include '../component/nav.html' %}
+ <!-- End Top Bar -->
+ <!-- Sidebar -->
+ {% include '../component/sidebar.html' %}
+ <!-- End Sidebar -->
+
+ <section class="content">
+    <div class="container-fluid">
+        <div class="block-header">
+            <h2>SPS</h2>
+        </div>
+        <!-- Input -->
+    
+
+        <!-- #END# Input -->
+        
+        <!-- Textarea -->
+        <div class="row clearfix">
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <div class="card">
+                    <div class="header">
+                        <h2>Add or Register Station</h2>
+                        <ul class="header-dropdown m-r--5">
+                            <li class="dropdown">
+                                <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                    <i class="material-icons">more_vert</i>
+                                </a>
+                                <ul class="dropdown-menu pull-right">
+                                    <li><a href="javascript:void(0);">Action</a></li>
+                                    <li><a href="javascript:void(0);">Another action</a></li>
+                                    <li><a href="javascript:void(0);">Something else here</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="body">
+                        <h2 class="card-inside-title">Basic Example</h2>
+                        <div class="form-group">
+                           
+                            <form action="{% url 'smartpower:sta_register' %}" method="post"  novalidate>
+                                {% include 'partials/_messages.html' %}
+                                {% csrf_token %}
+            
+                                  {{ station_form.as_p }}
+    
+                                    <br />
+                                    <br />
+                                    <br />
+                                  <div class="form-group">
+                                    <button class="btn btn-primary btn-block" type="submit" name="">Register</button>
+                                  </div>                                
+                            </form> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- #END# Textarea -->
+        <!--form-->
+        {%comment%}
+        <br />
+        <div class="container-fluid">
+            <div class="main-wrapper login-body">
+                <div class="login-wrapper">
+                    <div class="container">
+                        <div class="loginbox">
+                            <div class="login-right">
+                                <div class="login-right-wrap">
+                                <h3 class='profile-headers'>Edit Profile</h3>
+                                <p class="account-subtitle"></p>
+                                
+                           
+                                <form action="{% url 'smartpower:sta_register' %}" method="post" enctype="multipart/form-data"> 
+                                {% include 'partials/_messages.html' %}
+                                <br /><p>
+                                    Email: {{pp.email}}
+                                </p><br />    
+                                {% csrf_token %}
+                            
+                                    {{station_form.as_p}}
+
+                                    <br />
+                                    <div class="read-more">
+                                    <button  type="submit" name="">Edit Profile</button>
+                                    </div>                                
+                                </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {%endcomment%}
+        <!--endform-->
+    </div>
+</section>
+
+ {% endblock %}
+
+ {%comment%}
+ {% load static %}
+<!DOCTYPE html>
+<html>
+
+
+
+<body>
+
+    {% block content %}
+    <form>
+        {{ station_form.non_field_errors }}
+        <div class="form-line">
+            {{ station_form.user_profile.errors }}
+            <label for="{{ station_form.user_profile.id_for_label }}">User:</label>
+            {{ station_form.user_profile }}
+        </div>
+        <div class="form-line">
+            {{ station_form.company.errors }}
+            <label for="{{ station_form.company.id_for_label }}">Your company:</label>
+            {{ station_form.company }}
+        </div>
+        <div class="form-line">
+            {{ station_form.station_name.errors }}
+            <label for="{{ station_form.station_name.id_for_label }}">Your station_name:</label>
+            {{ station_form.station_name }}
+        </div>
+        <div class="form-line">
+            {{ station_form.station_code.errors }}
+            <label for="{{ station_form.station_code.id_for_label }}">Your station_code:</label>
+            {{ station_form.station_code }}
+        </div>
+        <div class="form-line">
+            {{ station_form.station_location.errors }}
+            <label for="{{ station_form.station_location.id_for_label }}">Your station_location:</label>
+            {{ station_form.station_location }}
+        </div>
+        <div class="form-line">
+            {{ station_form.longtitude.errors }}
+            <label for="{{ station_form.longtitude.id_for_label }}">Your longtitude:</label>
+            {{ station_form.longtitude }}
+        </div>
+        <div class="form-line">
+            {{ station_form.latitude.errors }}
+            <label for="{{ station_form.latitude.id_for_label }}">Your latitude:</label>
+            {{ station_form.latitude }}
+        </div>
+        <div class="form-line">
+            {{ station_form.area_office.errors }}
+            <label for="{{ station_form.area_office.id_for_label }}">Your area_office:</label>
+            {{ station_form.area_office }}
+        </div>
+        <div class="form-line">
+            {{ station_form.regional_office.errors }}
+            <label for="{{ station_form.regional_office.id_for_label }}">Your regional_office:</label>
+            {{ station_form.regional_office }}
+        </div>
+        <div class="form-line">
+            {{ station_form.country.errors }}
+            <label for="{{ station_form.country.id_for_label }}">Your country:</label>
+            {{ station_form.country }}
+        </div>
+        <div class="form-line">
+            {{ station_form.local_gov_are.errors }}
+            <label for="{{ station_form.local_gov_are.id_for_label }}">Your local_gov_are:</label>
+            {{ station_form.local_gov_are }}
+        </div>
+        <div class="form-line">
+            {{ station_form.state.errors }}
+            <label for="{{ station_form.state.id_for_label }}">Your state:</label>
+            {{ station_form.state }}
+        </div>
+        <div class="form-line">
+            {{ station_form.max_power.errors }}
+            <label for="{{ station_form.max_power.id_for_label }}">Your max_power:</label>
+            {{ station_form.max_power }}
+        </div>
+        <div class="form-line">
+            {{ station_form.zipcode.errors }}
+            <label for="{{ station_form.zipcode.id_for_label }}">Your zipcode:</label>
+            {{ station_form.zipcode }}
+        </div>
+        <br />
+        <br />
+      <div class="form-group">
+        <button class="btn btn-primary btn-block" type="submit" name="">Register</button>
+      </div>
+    </form>
+    {% endblock %}
+
+
+</body>
+
+</html>
+{%endcomment%}

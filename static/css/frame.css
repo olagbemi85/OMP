@@ -1,0 +1,214 @@
+
+#paraimg1{
+  width: 200px;
+  height: 400px;
+  object-fit: cover;
+}
+
+#myBtn {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  z-index: 99;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  background-color: rgba(245, 11, 11, 0.7);
+  color: white;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 4px;
+}
+
+#myBtn:hover {
+  background-color: #555;
+}
+
+.fill {object-fit: fill;}
+.contain {object-fit: contain;}
+.cover {object-fit: cover;}
+.scale-down {object-fit: scale-down;}
+.none {object-fit: none;}
+
+
+.wrapper {
+	width: 100%;
+	height: 50%;
+}
+.boxx {
+	display: flex;
+	width: 950px;
+	margin: 40px auto;
+}
+
+.single-boxx {
+	width: 250px;
+	background: #fff;
+	margin-right: 60px;
+	padding: 10px;
+	text-align: center;
+	box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+	position: relative;
+	color:rgb(55, 51, 51)
+
+}
+.single-boxx:last-child {
+	margin-right: 0;
+}
+.single-boxx .img {
+	width: 100%;
+	margin-bottom: 10px;
+}
+.single-boxx .price {
+	font-weight: 600;
+	font-size: 15px;
+}
+
+.single-boxx h3 {
+	margin-top: 25%;
+	margin-bottom: 5px;
+}
+.single-boxx p {
+	line-height: 1.9;
+}
+
+.single-boxx a {
+	background: #f57e20;
+	color: rgb(50, 48, 48);
+	text-decoration: none;
+	border-radius: 10px;
+	padding: 5px 10px;
+	display: inline-block;
+	margin-top: 10px;
+}
+.single-boxx .img {
+	width: 100%;
+	margin-bottom: 10px;
+}
+@media(max-width:991px) {
+	.boxx {
+		width: 100%;
+	}
+
+}
+@media (max-width:767px) {
+	.boxx {
+		width: 100%;
+		flex-direction: column;
+	}
+	
+	.single-boxx {
+		margin-right: 0;
+		width: 100%;
+		margin-bottom: 110px;
+	}
+}
+
+
+.singleboxy {
+	margin-right: 20px;
+	text-align: center;
+	position: relative;
+}
+
+.imgx {
+	position: absolute;
+	top: -25%;
+	left: 20%;
+}
+
+
+.backg {
+	background-color: rgb(80, 84, 85, 0.9);
+	color: white;
+	}
+
+.navback{
+        background-color: rgb(80, 84, 85, 0.7);
+      color: white;
+    }	
+
+
+
+    .login-wrapper{width:100%;height:100%;display:table-cell;vertical-align:middle}
+    .login-wrapper .loginbox{background-color:#fff;border-radius:10px;box-shadow:0 0 10px rgba(0,0,0,.1);display:flex;margin:1.875rem auto;max-width:500px;min-height:400px;width:100%}
+    .login-wrapper .loginbox .login-left{align-items:center;background:linear-gradient(180deg,#3949ab,#2962ff);border-radius:6px 0 0 6px;flex-direction:column;justify-content:center;padding:80px;width:400px;display:flex}
+    .login-wrapper .loginbox .login-right{align-items:center;display:flex;justify-content:center;padding:40px;width:100%}
+    .login-wrapper .loginbox .login-right .login-right-wrap{max-width:100%;flex:0 0 100%}
+    .login-wrapper .loginbox .login-right h1{font-size:26px;font-weight:500;margin-bottom:5px;text-align:center}
+    .account-subtitle{color:#4c4c4c;font-size:17px;margin-bottom:1.875rem;text-align:center}
+    .login-wrapper .loginbox .login-right .forgotpass a{color:#a0a0a0}
+    .login-wrapper .loginbox .login-right .forgotpass a:hover{color:#333;text-decoration:underline}
+    .login-wrapper .loginbox .login-right .dont-have{color:#a0a0a0;margin-top:1.875rem}
+    .login-wrapper .loginbox .login-right .dont-have a{color:#333}
+    .login-wrapper .loginbox .login-right .dont-have a:hover{text-decoration:underline}
+    .main-wrapper{width:100%;height:100vh;min-height:100vh}
+    .main-wrapper{display:flex;flex-wrap:wrap;height:auto;justify-content:center;width:100%;min-height:unset}
+    .form-group{margin-bottom:20px}
+    .form-group{margin-bottom:1.25rem}
+
+	
+	.container {
+		max-width: 960px;
+	  }
+
+
+	.titlepage {
+		text-align: center;
+		padding-bottom: 54px;
+   }
+   .titlepage h2 {
+		padding: 0px 0px 20px 0px;
+		font-size: 45px;
+		font-weight: bold;
+		color: #000;
+		line-height: 50px;
+		text-transform: uppercase;
+		position: relative;
+		display: inline-block;
+   }
+   .titlepage h2::before {
+	right: 100%;
+	margin-right: 15px;
+}
+.titlepage h2::after {
+	left: 100%;
+	margin-left: 15px;
+}
+.titlepage h2::before,
+ .titlepage h2::after {
+	content: "";
+	position: absolute;
+	height: 5px;
+	border-top: 1px solid #13aba6;
+	top: 27px;
+	width: 149px;
+}
+
+.read-more .myButton  {
+	display: none;
+	position: fixed;
+	bottom: 20px;
+	right: 30px;
+	z-index: 99;
+	font-size: 18px;
+	border: none;
+	outline: none;
+	background-color: rgba(245, 11, 11, 0.7);
+	color: white;
+	padding: 15px;
+	border-radius: 4px;
+  }
+  
+  #myButton:hover {
+	background-color: #555;
+  }
+  
+#tytytttttt{
+	background-color: rgba(247, 33, 97, 0.938);
+	background-color: rgba(247, 232, 33, 0.3);
+	color: rgba(247, 232, 33, 0);
+	background-color: rgba(247, 232, 33, 0.9);
+	
+}	  

@@ -1,0 +1,280 @@
+{% extends "../base_power_system.html" %}
+{%  load static %}
+{% block title %}SPS(mini SCADA){% endblock %}  <!-- Smart Power System -->
+{% block content %}
+
+<style>
+     button {
+    bottom: 20px;
+    right: 30px;
+    border: none;
+    background-color: red;
+    color: white;
+    border-radius: 4px;
+  }
+  
+  button:hover {
+    background-color: #555;
+  }
+    form p {
+        margin: 1em 0 .5em 1em;
+    }
+    
+    form {
+        background-color: #fafafa;
+        padding: 1.5em;
+        /*margin-right: 6em;*/
+    }
+    
+    input, select, textarea {
+        margin: 1em;
+        padding: .5em;
+        width: 45%;
+        font-size: 17px;
+        border: 1px solid #aaa;
+    }
+    
+    input[type="checkbox"] {
+        width: auto;
+        margin: .5em 1em 0 1em;
+    }
+    
+    input[type="date"] {
+        color: #aaa!important;
+    }
+    
+    #locationField > input {
+        width: 290%!important;
+    }
+    
+    input.invalid {
+        background-color: #ffdddd;
+    }
+    
+    .tab {
+        display: none;
+    }
+    
+    .step {
+        height: 15px;
+        width: 15px;
+        margin: 0 2px;
+        background-color: #bbbbbb;
+        border: none;
+        border-radius: 50%;
+        display: inline-block;
+        opacity: 0.5;
+    }
+    
+    .step.active {
+        opacity: 1;
+        background-color: #fac123;
+    }
+</style>
+
+<!-- Page Loader 
+{% include '../component/loader.html' %}-->
+<!-- #END# Page Loader -->
+ <!-- Top Bar -->
+{% include '../component/nav.html' %}
+ <!-- End Top Bar -->
+ <!-- Sidebar -->
+ {% include '../component/sidebar.html' %}
+ <!-- End Sidebar -->
+ <!-- pagecontent -->
+ 
+<section class="content">
+    <div class="container-fluid">
+ 
+        <!-- Advanced Form Example With Validation -->
+        <div class="row clearfix">            
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="card">
+                    <div class="header">
+                        <h2>METER APPLICATION FORM</h2>
+                    </div>
+                    <div class="body">
+                        {%comment%}
+                        <form id="formv" action="{% url 'meterapp:new_application' %}" method="POST" enctype="multipart/form-data">
+                           {% include 'partials/_messages.html' %}
+                            {% csrf_token %}
+                            {{update_form.no_field_errors}}
+                            {% if update_form.errors %}
+                            {% for field in update_form %}
+                                {% for error in field.errors %} 
+                                    <div class="alert alert-danger">
+                                        <strong>{{ error|escape }}</strong>
+                                    </div>
+                                {% endfor %}
+                            {% endfor %}
+                            {% endif %}
+   
+                        </form>
+                        {%endcomment%}
+
+
+                        
+                        <form id="form" action="{% url 'meterapp:edit_form' st %}" method="POST" enctype="multipart/form-data">
+                            {% include 'partials/_messages.html' %}
+                             {% csrf_token %}
+                             {{ update_form.as_ul }}
+                             <div class="form-group">
+                                <button class="btn btn-energy" type="submit" name="">Submit</button>
+                              </div>
+                        </form>     
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- #END# Advanced Form Example With Validation -->   
+    </div>
+</section>
+{%comment%}
+<script>
+    function showForm() {
+      var selectElement = document.getElementById("options");
+      var hiddenForm = document.getElementById("hiddenForm");
+
+      if (selectElement.value =="YES") {
+        hiddenForm.style.display = "block";
+      } else {
+        hiddenForm.style.display = "none";
+      }
+    }
+  </script>
+
+<script>
+    $(document).ready(function(){
+        $("#options").click(function(){
+        var hiddenForm = document.getElementById("hiddenForm");
+        if (selectElement.value =="YES") {
+        hiddenForm.style.display = "block";
+      } else {
+        hiddenForm.style.display = "none";
+      }
+        });
+    });
+</script>
+{%endcomment%}
+
+<script>
+    // ~~~ tab functionality
+
+var currentTab = 0; // current tab is set to be the first tab (0)
+showTab(currentTab); // display the current tab
+
+function showTab(n) {
+
+    var x = document.getElementsByClassName("tab");
+    x[n].style.display = "block";
+
+    if (n == 0) {
+        document.getElementById("prevBtn").style.display = "none";
+    } else {
+        document.getElementById("prevBtn").style.display = "inline";
+    }
+    if (n == (x.length - 1)) {
+        document.getElementById("nextBtn").innerHTML = "Submit";
+    } else {
+        document.getElementById("nextBtn").innerHTML = "Next";
+    }
+
+    fixStepIndicator(n)
+}
+
+function nextPrev(n) {
+
+    var x = document.getElementsByClassName("tab");
+
+    if (n == 1 && !validateForm()) return false;
+
+    x[currentTab].style.display = "none";
+
+    currentTab = currentTab + n;
+
+    if (currentTab >= x.length) {
+        //...the form gets submitted:
+        document.getElementById("formv").submit();
+        return false;
+    }
+
+    showTab(currentTab);
+}
+
+
+
+
+function validateForm() {
+    var x, y, i, s, valid = true;
+    x = document.getElementsByClassName("tab");
+    y = x[currentTab].getElementsByTagName("input");
+    s = x[currentTab].getElementsByTagName("select");
+    for (i = 0; i < y.length; i++) {
+        if (y[i].value == "") {
+            y[i].className += " invalid";
+            valid = false;
+        }
+    }
+
+    for (i = 0; i < s.length; i++) {
+        if (s[i].value == "") {
+            s[i].className += " invalid";
+            valid = false;
+        }
+    }
+
+    if (valid) {
+        document.getElementsByClassName("step")[currentTab].className += " finish";
+    }
+    return valid; // return the valid status
+}
+
+function fixStepIndicator(n) {
+
+    var i, x = document.getElementsByClassName("step");
+    for (i = 0; i < x.length; i++) {
+        x[i].className = x[i].className.replace(" active", "");
+    }
+
+    x[n].className += " active";
+}
+
+// ~~~ dog breed selector
+
+const BREEDS_URL = 'https://dog.ceo/api/breeds/list/all';
+
+const select = document.querySelector('.breeds');
+
+fetch(BREEDS_URL)
+    .then(res => {
+    return res.json();
+})
+    .then(data => {
+    const breedsObject = data.message;
+    const breedsArray = Object.keys(breedsObject);
+    for (let i = 0; i < breedsArray.length; i++) {
+        const option = document.createElement('option');
+        option.value = breedsArray[i];
+        option.innerText = breedsArray[i];
+        select.appendChild(option);
+    }
+    console.log(breedsArray);
+});
+
+// ~~~ basic form validation
+
+// ~~~ date validation
+
+function checkStartDate() {
+    var startDate = document.getElementById('ate').value;
+    var selectedStartDate = new Date(startDate);
+    var now = new Date();
+    if (selectedStartDate > now) {
+        alert("Please enter the date of application and can't be future date");
+        $("#ate").addClass("invalid");
+    }
+}
+
+</script>
+
+{% endblock %}

@@ -1,0 +1,300 @@
+body{
+    background-color: rgb(242, 241, 241) !important;
+    overflow: hidden;
+}
+
+.pay-div>div{
+    height: 700px;
+}
+
+.slide-imgs{
+    overflow: hidden;
+    padding: 0 !important;
+    height: 100% !important;
+    position: relative;
+}
+
+.slide-imgs img{
+    height: 100% !important;
+    object-fit: cover;
+}
+
+.ad-carousel,.owl-stage-outer,.owl-item,.owl-item .item{
+    height: 700px !important;
+}
+
+.slide-imgs .overlay{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    background-color: #03043478;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+}
+
+.pay-div{
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+.pay-card{
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+    border-radius: 15px !important;
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.12)!important;
+    overflow: hidden;
+    border: 0 !important;
+}
+
+.pay-card>.row{
+    height: 100%;
+}
+
+.energy-form .form-control{
+    height: calc(1.5em + 1.3rem + 2px) !important;
+    border-radius: .5rem !important;
+}
+
+.energy-form .form-control:focus{
+    border-color: #030277 !important;
+    box-shadow: 0 0 0 0.2rem rgb(3 5 117 / 10%) !important;
+}
+
+.energy-form .btn:focus{
+    box-shadow: 0 0 0 0.2rem rgb(3 5 117 / 10%) !important;
+}
+
+.btn-energy{
+    color: #212529 !important;
+    background-color: #ffb33b !important;
+    border-color: #ffb33b !important;
+    padding: 0.8rem 1.7rem !important;
+    border-radius: 0.5rem !important;
+}
+
+.blob1{
+    position: absolute;
+    height: 50%;
+    left: -180px;
+    top: -120px;
+    z-index: 2;
+    margin-left: -100px;
+    rotate: 0deg;
+}
+
+.blob2{
+    position: absolute;
+    height: 50%;
+    right: 0;
+    bottom: -187px;
+    z-index: 2;
+    margin-right: -150px;
+    rotate: 10deg;
+}
+
+.blob3{
+    position: absolute;
+    height: 278%;
+    right: 110px;
+    top: -825px;
+    z-index: 2;
+    rotate: 20deg;
+    opacity: 0.1;
+}
+
+.logo-small{
+    height: 70%;
+}
+
+.btn-primary{
+    background-color: #030575 !important;
+    border-color: #030575 !important;
+    border-radius: 5px !important;
+}
+
+.btn-success{
+    background-color: #00c292 !important;
+    border-color: #00c292 !important;
+    border-radius: 5px !important;
+}
+
+.btn-warning{
+    background-color: #faa64b !important;
+    border-color: #faa64b !important;
+    border-radius: 5px !important;
+}
+
+.btn-info{
+    background-color: #03a9f3 !important;
+    border-color: #03a9f3 !important;
+    border-radius: 5px !important;
+}
+
+.inner-div{
+    max-height: 700px;
+    overflow: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.inner-div::-webkit-scrollbar {
+    width: 5px;
+}
+
+/* Track */
+.inner-div::-webkit-scrollbar-track {
+    background-color: white;
+    border-radius: 10px;
+}
+
+/* Handle */
+.inner-div::-webkit-scrollbar-thumb {
+    background: gray;
+    border-radius: 10px;
+}
+
+/* Handle on hover */
+.inner-div::-webkit-scrollbar-thumb:hover {
+    background: rgb(84, 84, 84);
+}
+
+.font-17-13{
+    font-size: 17px;
+}
+
+@media screen and (max-width: 900px) {
+    .flex-tab-50{
+        flex: 0 0 50% !important;
+        max-width: 50% !important;
+    }
+
+    .font-tab-large{
+        font-size: 3.5rem !important;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .mobile-d-none{
+        display: none !important;
+    }
+
+    .font-17-13{
+        font-size: 13px;
+    }
+
+    .pay-div>div{
+        height: 100%;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+    }
+
+    .blob3 {
+        height: 230%;
+        right: -50px;
+    }
+
+    .blob1 {
+        height: 30%;
+        left: unset;
+        margin-right: unset;
+        right: -43px;
+        top: -99px;
+        rotate: 23deg;
+    }
+
+    .font-tab-large{
+        font-size: 4.5rem !important;
+    }
+
+    .pay-card{
+        height: fit-content;
+        padding-bottom: 15px;
+        margin-top: 30px;
+    }
+
+    .flex-tab-50{
+        flex: 0 0 100% !important;
+        max-width: 100% !important;
+    }
+
+    .flex-50{
+        flex: 0 0 50% !important;
+        max-width: 50% !important;
+    }
+
+    .aedc-logo{
+        height: 70%;
+    }
+
+    .btn-energy{
+        padding: 0.7rem 1.5rem !important;
+    }
+
+    .inner-div{
+        max-height: 95vh;
+    }
+}
+
+@media print {
+    #body{
+        display: flex;
+        justify-content: center;
+        font-family:Georgia, 'Times New Roman', Times, serif;
+    }
+
+    #body #printarea{
+        width: 350px;
+    }
+
+    /* styles for the elements when they are printed */
+    .mobile-d-none{
+        display: none !important;
+    }
+
+    .blob3 {
+        display: none;
+    }
+
+    .blob2 {
+        display: none;
+    }
+
+    .blob1 {
+        display: none;
+    }
+}
+
+#__token{
+    color: #030575;
+}
+
+#new_alert{
+    font-size: 10px;
+    position: absolute;
+    top: 0px;
+    font-style: italic;
+}
+
+.UpDown{
+    animation: UpDown;
+    animation-duration: 10s;
+    animation-timing-function: ease-out;
+}
+
+@keyframes UpDown {
+    0%{
+        top: -10px;
+    }
+    100%{
+        top: -3px;
+    }
+}
+
+.highlight-text {
+    background-color:#faa64b;
+}

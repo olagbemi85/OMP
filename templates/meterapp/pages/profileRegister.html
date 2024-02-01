@@ -1,0 +1,69 @@
+{% extends "../base_power_system.html" %}
+{%  load static %}
+{% block title %}SPS(power){% endblock %}  <!-- Smart Power System -->
+{% block content %}
+
+<!-- Page Loader -->
+{% include '../component/loader.html' %}
+<!-- #END# Page Loader -->
+ <!-- Top Bar -->
+{% include '../component/nav.html' %}
+ <!-- End Top Bar -->
+ <!-- Sidebar -->
+ {% include '../component/sidebar.html' %}
+ <!-- End Sidebar -->
+
+ <section class="content">
+    <div class="container-fluid">
+        <div class="block-header">
+            <h2>Smart Power System</h2>
+        </div>
+
+        <!-- Textarea -->
+        <div class="row clearfix">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="card">
+                    <div class="header">
+                        <h2>Register</h2>
+                        <ul class="header-dropdown m-r--5">
+                            <li class="dropdown">
+                                <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                    <i class="material-icons">more_vert</i>
+                                </a>
+                                <ul class="dropdown-menu pull-right">
+                                    <li><a href="javascript:void(0);">Action</a></li>
+                                    <li><a href="javascript:void(0);">Another action</a></li>
+                                    <li><a href="javascript:void(0);">Something else here</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="body">
+                        <h2 class="card-inside-title">Basic Example</h2>
+                        <div class="form-group">
+                            <form action="{% url 'smartpower:register' %}" method="post"  novalidate>
+                                {% include 'partials/_messages.html' %}
+                                {% csrf_token %}
+            
+                                  {{ profile_form.as_p }}
+    
+                                    <br />
+                                    <br />
+                                    <br />
+                                  <div class="form-group">
+                                    <button class="btn btn-primary btn-block" type="submit" name="">Register</button>
+                                  </div>                                
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- #END# Textarea -->
+
+    </div>
+</section>
+
+
+ {% endblock %}

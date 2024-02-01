@@ -1,0 +1,305 @@
+{% extends "../base_power_system.html" %}
+{%  load static %}
+{% block title %}MAP{% endblock %}  <!-- Smart Power System -->
+{% block content %}
+<style>
+  body{background-color: rgb(98, 94, 94);}
+    /* Number text (1/3 etc) */
+        .numbertext {
+        color: #f2f2f2;
+        font-size: 12px;
+        padding: 8px 12px;
+        position: absolute;
+        top: 0;
+        }
+
+        .cnt{margin: 5px;}
+        .cnt2{
+           margin-bottom: 20px;
+           margin-left: 20px;
+           margin-top: 0px;
+           justify-content: center;
+             align-items: center;
+        }
+            
+        .btn-energy {
+        color: #212529 !important;
+        background-color: #ce4a2d !important;
+        border-color: #ce4a2d !important;
+        padding: 0.8rem 1.7rem !important;
+        border-radius: 0.5rem !important;
+        } 
+
+        .my12Btn {
+                position: relative;
+                bottom: 20px;
+                right: 30px;
+                z-index: 99;
+                font-size: 18px;
+                border: none;
+                outline: none;
+                background-color: red;
+                color: white;
+                cursor: pointer;
+                padding: 15px;
+                border-radius: 4px;
+            }
+
+    /* The dots/bullets/indicators */
+    .dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+    }
+    .active, .dot:hover {
+    background-color: #717171;
+    }
+
+    /* Next & previous buttons */
+    .prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    margin-top: -22px;
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    }
+
+
+    /* Position the "next button" to the right */
+    .next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+    }
+
+    /* On hover, add a black background color with a little bit see-through */
+    .prev:hover, .next:hover {
+    background-color: rgba(0,0,0,0.8);
+    }
+
+
+  /* Style for slider container */
+  /*.slider {
+      width: 100%;
+      margin: 0 auto;
+      position: relative;
+      overflow: hidden;
+    }*/
+
+    /* Style for slides */
+    .slide {
+      display: none;
+      width: 100%;
+      text-align: center;
+    }
+
+    /* Style for images */
+    .slide img {
+      width: 100%;
+      height: 50rem;
+      top: 0;
+    left: 0;
+    } 
+
+    /*.slide img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    height: 32rem;
+    } */
+
+    /* Style for text */
+    .slide .text {
+      position: absolute;
+      top: 75%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(0, 0, 0, 0.4);
+      color: white;
+      padding: 20px;
+      border-radius: 5px;
+    }
+
+  /*  @keyframes fade {
+  from {opacity: .9} 
+  to {opacity: 1}
+}*/
+/* Register with slideshow jion */
+.pay-card{
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+  border-radius: 15px !important;
+  box-shadow: 0 .5rem 1rem rgba(0,0,0,.12)!important;
+  overflow: hidden;
+  border: 0 !important;
+}
+
+.pay-card>.row{
+  height: 100%;
+}
+
+@media screen and (max-width: 500px) {
+  .mobile-d-none{
+      display: none !important;
+  }
+
+  .font-17-13{
+      font-size: 13px;
+  }
+
+  .pay-div>div{
+      height: 100%;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+  }
+
+  .blob3 {
+      height: 230%;
+      right: -50px;
+  }
+
+  .blob1 {
+      height: 30%;
+      left: unset;
+      margin-right: unset;
+      right: -43px;
+      top: -99px;
+      rotate: 23deg;
+  }
+
+  .font-tab-large{
+      font-size: 4.5rem !important;
+  }
+
+  .pay-card{
+      height: fit-content;
+      padding-bottom: 15px;
+      margin-top: 30px;
+  }
+
+  .flex-tab-50{
+      flex: 0 0 100% !important;
+      max-width: 100% !important;
+  }
+
+  .flex-50{
+      flex: 0 0 50% !important;
+      max-width: 50% !important;
+  }
+
+  .aedc-logo{
+      height: 70%;
+  }
+
+  .btn-energy{
+      padding: 0.7rem 1.5rem !important;
+  }
+
+  .inner-div{
+      max-height: 95vh;
+  }
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .text {font-size: 11px}
+}
+
+
+</style>
+
+
+<!--{% include '../component/loader.html' %}
+ #END# Page Loader -->
+ <!-- Top Bar -->
+{% include '../component/nav.html' %}
+ <!-- End Top Bar -->
+ <!-- Sidebar -->
+ {% include '../component/sidebar.html' %}
+ <!-- End Sidebar -->
+ <!-- pagecontent --> 
+<section class="content">
+    <div class="container-fluid">   
+        <div class="row clearfix">
+            <!-- Task Info -->
+            <div class="pay-card card">
+              <div>
+                <div class='cnt'>
+                    <br /><br /><br />
+                    <h3 class='profile-headers'>Profile Detail</h3>
+                    <br /><br /><br />
+                    <div class='row'>
+                      <div class='col-xl-6 col-lg-6 col-md-6 col-sm-12'>
+                        <ul class="list-group list-group-flush">
+                          <li class="list-group-item"><span><h4>Email:  </h4></span>{{post.email}}</li>
+                          <li class="list-group-item"><span><h4>Username:  </h4></span>{{post.username}}</li>
+                          <li class="list-group-item"><span><h4>First Name:  </h4></span>{{post.first_name}}</li>
+                          <li class="list-group-item"><span><h4>Last Name:  </h4></span>{{post.last_name}}</li>
+                          <li class="list-group-item"><span><h4>Middle Name:  </h4></span>{{post.middle_name}}</li>
+                          <li class="list-group-item"><span><h4>Address:  </h4></span>{{post.address_line_1}}</li>
+                          <link rel="stylesheet" href="{% static 'css/sprite.css' %}">
+                          <li class="list-group-item"><span><h4>Country:  </h4></span>{{post.country.name}} <i class="{{ country.flag_css }}"></i></li>
+                          <li class="list-group-item"><span><h4>City:  </h4></span>{{post.town_city}}</li>
+                          <li class="list-group-item"><span><h4>Phone Number:  </h4></span>{{post.phone_number}}</li>
+                          <li class="list-group-item"><span><h4>Date Of Birth:  </h4></span>{{post.date_of_birth}}</li>
+                        </ul>
+                        
+                      </div>
+                      <div class='col-xl-6 col-lg-6 col-md-6 col-sm-12'>
+                        {% if post.profile_pic %}
+                        <img class="img-responsive" src="{{post.profile_pic.url}}" />
+                        {% else %}
+                        <img class="img-responsive" src="{% static 'images/person.png'%}" />
+                        {% endif %}
+                      </div>
+                    </div>
+                    <br />
+                    <br />
+                    <div class="nav-item cnt2">
+                      <a class="btn-energy" href="{% url 'account:edit-profile' %}">Edit Profile</a>
+                   </div>
+                  </div>
+              </div>
+            </div>
+        </div>
+    </div>
+   
+</section>
+
+<script>
+    let slideIndex = 0;
+    showSlides();
+
+function showSlides() {
+  let i;
+  let slides = document.getElementsByClassName("slide");
+  let dots = document.getElementsByClassName("dot");
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";  
+  }
+  slideIndex++;
+  if (slideIndex > slides.length) {slideIndex = 1}    
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";  
+  dots[slideIndex-1].className += " active";
+  setTimeout(showSlides, 8000); // Change image every 3 seconds
+}
+  </script>
+
+{% endblock %}

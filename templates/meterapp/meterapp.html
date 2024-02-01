@@ -1,0 +1,194 @@
+{% extends "../base_power_system.html" %}
+{%  load static %}
+{% block title %}Meter Request{% endblock %}  <!-- Smart Power System -->
+{% block content %}
+<style>
+    .hidden{
+        display: none;
+    }
+</style>
+
+<!-- Page Loader 
+{% include '../component/loader.html' %}-->
+<!-- #END# Page Loader -->
+ <!-- Top Bar -->
+{% include '../component/nav.html' %}
+ <!-- End Top Bar -->
+ <!-- Sidebar -->
+ {% include '../component/sidebar.html' %}
+ <!-- End Sidebar -->
+ <!-- pagecontent -->
+ 
+<section class="content">
+    <div class="container-fluid">
+ 
+        <!-- Advanced Form Example With Validation -->
+        <div class="row clearfix">
+            {% include 'partials/_messages.html' %}
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="card">
+                    <div class="header">
+                        <h2>METER APPLICATION FORM</h2>
+                        <ul class="header-dropdown m-r--5">
+                            <li class="dropdown">
+                                <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                    <i class="material-icons">more_vert</i>
+                                </a>
+                                <ul class="dropdown-menu pull-right">
+                                    <li><a href="javascript:void(0);">Action</a></li>
+                                    <li><a href="javascript:void(0);">Another action</a></li>
+                                    <li><a href="javascript:void(0);">Something else here</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="body">
+                        <form id="wizard_with_validation" method="POST">
+                            <h3>Account Information</h3>
+                            <fieldset>
+                                
+                                <br /><br />
+                                <!--
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <label class="form-label">Thus the house has account Number? *</label>
+                                    <select class="form-control" id="options" onchange="showForm()" required>
+                                        <option value="">-- Please select --</option>
+                                        <option value="YES">YES</option>
+                                        <option value="NO">NO</option>
+                                    </select>   
+                                </div>
+                            
+                                    <input type="checkbox" id="md_checkbox_21" class="filled-in chk-col-red"/>
+                                    <label for="md_checkbox_21">RED</label>-->
+                                
+                                <div class="col-sm-6">
+                                    <label class="form-label">State*</label>
+                                    <select class="form-control">
+                                        <option value="">-- Please select --</option>
+                                        <option value="Niger">Niger</option>
+                                        <option value="Kogi">Kogi</option>
+                                        <option value="Nassarrawa">Nassarrawa</option>
+                                        <option value="FCT">FCT</option>
+                                    </select>   
+                                </div>
+                               
+                                <div class="col-sm-6">
+                                    <label class="form-label">Type of Meter*</label>
+                                    <select class="form-control">
+                                        <option value="">-- Please select --</option>
+                                        <option value="Single-Phase Meter">Single-Phase Meter</option>
+                                        <option value="Three-Phase Meter">Three-Phase Meter</option>
+                                        <option value="MD Meter">MD Meter</option>
+                                    </select>   
+                                </div>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div>
+                                        <label class="form-label">Address Of The House To use the Meter*</label>                                        
+                                        <input type="text" class="form-control" name="house_address" placeholder="House address" required>
+                                    </div>
+                                </div>
+                                <br />
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div id="hiddenForm">
+                                        <label class="form-label">Enter Account Number</label>
+                                        <input type="text" name="account_number" class="form-control" placeholder="Account Number if any" required>
+                                    </div>
+                                </div>
+                               
+                            </fieldset>
+
+                            <h3>Payment Information</h3>
+                            <fieldset>
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                        <input type="text" name="name" class="form-control" required>
+                                        <label class="form-label">First Name*</label>
+                                    </div>
+                                </div>
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                        <input type="text" name="surname" class="form-control" required>
+                                        <label class="form-label">Last Name*</label>
+                                    </div>
+                                </div>
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                        <input type="email" name="email" class="form-control" required>
+                                        <label class="form-label">Email*</label>
+                                    </div>
+                                </div>
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                        <textarea name="address" cols="30" rows="3" class="form-control no-resize" required></textarea>
+                                        <label class="form-label">Address*</label>
+                                    </div>
+                                </div>
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                        <input min="18" type="number" name="age" class="form-control" required>
+                                        <label class="form-label">Age*</label>
+                                    </div>
+                                    <div class="help-info">The warning step will show up if age is less than 18</div>
+                                </div>
+                            </fieldset>
+
+                            <h3>Terms & Conditions - Finish</h3>
+                            <fieldset>
+                                <input id="acceptTerms-2" name="acceptTerms" type="checkbox" required>
+                                <label for="acceptTerms-2">I agree with the Terms and Conditions.</label>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- #END# Advanced Form Example With Validation -->
+
+       
+    </div>
+</section>
+{%comment%}
+<script>
+    function showForm() {
+      var selectElement = document.getElementById("options");
+      var hiddenForm = document.getElementById("hiddenForm");
+
+      if (selectElement.value =="YES") {
+        hiddenForm.style.display = "block";
+      } else {
+        hiddenForm.style.display = "none";
+      }
+    }
+  </script>
+
+<script>
+    $(document).ready(function(){
+        $("#options").click(function(){
+        var hiddenForm = document.getElementById("hiddenForm");
+        if (selectElement.value =="YES") {
+        hiddenForm.style.display = "block";
+      } else {
+        hiddenForm.style.display = "none";
+      }
+        });
+    });
+</script>
+{%endcomment%}
+<script>
+    $(document).ready(function(){
+    $("#md_checkbox_21").click(function(){
+       
+            $("#hiddenForm").css("display","block");
+            
+       
+          
+    });
+    
+});
+
+</script>
+
+<script src="{% static 'js/iotPowerSystem/chart.js' %}"></script>
+
+
+{% endblock %}

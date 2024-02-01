@@ -1,0 +1,333 @@
+{% extends "../base_power_system.html" %}
+{%  load static %}
+{% block title %}Staff Page{% endblock %}  <!-- Smart Power System -->
+{% block content %}
+<style>
+  /* body{background-color: rgb(98, 94, 94);}
+     Number text (1/3 etc) */
+     .aa{
+        background-color: #ce4a2d;
+        color:whitesmoke !important;
+ 
+     }
+        .numbertext {
+        color: #f2f2f2;
+        font-size: 12px;
+        padding: 8px 12px;
+        position: absolute;
+        top: 0;
+        }
+    
+  .btn-energy {
+    color: #212529 !important;
+    background-color: #ce4a2d !important;
+    border-color: #ce4a2d !important;
+    padding: 0.8rem 1.7rem !important;
+    border-radius: 0.5rem !important;
+  }    
+
+    /* The dots/bullets/indicators */
+    .dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+    }
+    .active, .dot:hover {
+    background-color: #717171;
+    }
+
+    /* Next & previous buttons */
+    .prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    margin-top: -22px;
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    }
+
+
+    /* Position the "next button" to the right */
+    .next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+    }
+
+    /* On hover, add a black background color with a little bit see-through */
+    .prev:hover, .next:hover {
+    background-color: rgba(0,0,0,0.8);
+    }
+
+
+  /* Style for slider container */
+  /*.slider {
+      width: 100%;
+      margin: 0 auto;
+      position: relative;
+      overflow: hidden;
+    }*/
+
+    /* Style for slides */
+    .slide {
+      display: none;
+      width: 100%;
+      text-align: center;
+    }
+
+    /* Style for images */
+    .slide img {
+      width: 100%;
+      height: 50rem;
+      top: 0;
+    left: 0;
+    } 
+
+    /*.slide img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    height: 32rem;
+    } */
+
+    /* Style for text */
+    .slide .text {
+      position: absolute;
+      top: 75%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(0, 0, 0, 0.4);
+      color: white;
+      padding: 20px;
+      border-radius: 5px;
+    }
+
+  /*  @keyframes fade {
+  from {opacity: .9} 
+  to {opacity: 1}
+}*/
+/* Register with slideshow jion */
+.pay-card{
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+  border-radius: 15px !important;
+  box-shadow: 0 .5rem 1rem rgba(0,0,0,.12)!important;
+  overflow: hidden;
+  border: 0 !important;
+}
+
+.pay-card>.row{
+  height: 100%;
+}
+
+@media screen and (max-width: 500px) {
+  .mobile-d-none{
+      display: none !important;
+  }
+
+  .font-17-13{
+      font-size: 13px;
+  }
+
+  .pay-div>div{
+      height: 100%;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+  }
+
+  .blob3 {
+      height: 230%;
+      right: -50px;
+  }
+
+  .blob1 {
+      height: 30%;
+      left: unset;
+      margin-right: unset;
+      right: -43px;
+      top: -99px;
+      rotate: 23deg;
+  }
+
+  .font-tab-large{
+      font-size: 4.5rem !important;
+  }
+
+  .pay-card{
+      height: fit-content;
+      padding-bottom: 15px;
+      margin-top: 30px;
+  }
+
+  .flex-tab-50{
+      flex: 0 0 100% !important;
+      max-width: 100% !important;
+  }
+
+  .flex-50{
+      flex: 0 0 50% !important;
+      max-width: 50% !important;
+  }
+
+  .aedc-logo{
+      height: 70%;
+  }
+
+  .btn-energy{
+      padding: 0.7rem 1.5rem !important;
+  }
+
+  .inner-div{
+      max-height: 95vh;
+  }
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .text {font-size: 11px}
+}
+
+
+</style>
+
+<!--
+{% include '../component/loader.html' %}
+ #END# Page Loader -->
+ <!-- Top Bar -->
+{% include '../component/nav.html' %}
+ <!-- End Top Bar -->
+ <!-- Sidebar -->
+ {% include '../component/sidebar.html' %}
+ <!-- End Sidebar -->
+ <!-- pagecontent --> 
+ <section class="content">
+    {%if form%}
+  <div class="container-fluid">   
+      <div class="row clearfix">
+          <!-- Task Info -->
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+              <div class="card">
+                  <div class="header">
+                      <h2>Authorize Personnel</h2>
+                      <ul class="header-dropdown m-r--5">
+                          <li class="dropdown">
+                              <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                  <i class="material-icons">more_vert</i>
+                              </a>
+                              <ul class="dropdown-menu pull-right">
+                                  <li><a href="javascript:void(0);">Action</a></li>
+                                  <li><a href="javascript:void(0);">Another action</a></li>
+                                  <li><a href="javascript:void(0);">Something else here</a></li>
+                              </ul>
+                          </li>
+                      </ul>
+                  </div>
+                  <div class="body">
+                      <div class="table-responsive">
+                          <table class="table table-hover dashboard-task-infos">
+                              <thead>
+                                  <tr>
+                                      <th>#</th>
+                                      <th>Name</th>
+                                      <th>Position</th>
+                                      <th>Region</th>
+                                      <th>Area Office</th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                  <tr>
+                                      <td>1</td>
+                                      <td>Task A</td>
+                                      <td><span class="label bg-green">Doing</span></td>
+                                      <td>John Doe</td>
+                                      <td>
+                                          <div class="progress">
+                                              <div class="progress-bar bg-green" role="progressbar" aria-valuenow="62" aria-valuemin="0" aria-valuemax="100" style="width: 62%"></div>
+                                          </div>
+                                      </td>
+                                  </tr>
+                                  <tr>
+                                      <td>2</td>
+                                      <td>Task B</td>
+                                      <td><span class="label bg-blue">To Do</span></td>
+                                      <td>John Doe</td>
+                                      <td>
+                                          <div class="progress">
+                                              <div class="progress-bar bg-blue" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%"></div>
+                                          </div>
+                                      </td>
+                                  </tr>
+                                 
+                              </tbody>
+                          </table>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  {%endif%}
+
+  <div class="container-fluid">
+      <div class="row">
+        {%if form%}
+          {%for s in form%}
+          <script src="{% static 'js/iotPowerSystem/power.js' %}"></script>
+          
+          
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+              <div class="info-box-4">
+                  <!--<div class="icon">
+                      <div class="chart chart-bar" data-chartcolor="yellow">6,8,6,8,10</div>
+                  </div>-->
+                  <div class="content">
+                      <div class="text" data-chartcolor="yellow">{{s.code}}</div>
+                      <!--<div class="text"><a class="text" href='{% url "smartpower:sps_page" s.code %}'>{{s.user}}</a></div>-->
+                      <div class="text"><a class="text" href="{{ s.get_absolute_url }}">Station Detail</a></div>
+                      <div class="text">{{s.area_office}}</div>
+                      <!--<div id="{{s.code}}"  data-url="{% url 'smartpower:xterpower' s.code %}">
+                          <div id = "getLoad"></div>
+                          <div class="progress">
+                              <div class="progress-bar bg-blue progresS" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                          </div>
+                          <div class="text"><h4 class="tx"></h4></div>     
+                      </div>-->
+                  </div>
+              </div>
+          </div>
+          {%endfor%}
+          {%else%}
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="info-box-4">
+                <!--<div class="icon">
+                    <div class="chart chart-bar" data-chartcolor="yellow">6,8,6,8,10</div>
+                </div>-->
+                <div class="content">
+                    <div class="text" data-chartcolor="yellow">NO APPLICATION</div>
+                   <p> You have no meter application avaliable at the moment you can <button class="btn-energy"><a class="aa" href="{% url 'meterapp:new_application' %}"> Apply </a></button></p>
+                    <!--<div class="text"><a class="text" href="{{ s.get_absolute_url }}">Station Detail</a></div>
+                    <div class="text">{{s.area_office}}</div>-->
+                 
+                </div>
+            </div>
+        </div>
+        {%endif%}
+      </div>
+  
+  </div>
+</section>
+
+{% endblock %}

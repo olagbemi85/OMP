@@ -1,0 +1,100 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- Favicon-->
+    <!--<link rel="icon" href="favicon.ico" type="image/x-icon">-->
+    <link rel="icon" href="{% static 'images/favicon_io/favicon.ico' %}" type="image/x-icon">
+
+    <!-- Google Fonts -->
+    <!-- Bootstrap Core Css -->
+    <link href="{% static 'plugins/css/bootstrap.css' %}" rel="stylesheet" /> 
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
+    <link href="{% static 'plugins/css/icon.css' %}" rel="stylesheet" type="text/css">
+  
+    <!-- Waves Effect Css -->
+    <link href="{% static 'plugins/node-waves/waves.css' %}" rel="stylesheet" />
+
+    <!-- Animation Css -->
+    <link href="{% static 'plugins/animate-css/animate.css' %}" rel="stylesheet" />
+
+    <!-- Morris Chart Css-->
+    <link href="{% static 'plugins/morrisjs/morris.css' %}" rel="stylesheet" />
+  
+
+    <!-- Custom Css -->
+    <link href="{% static 'css/powerprojstyle.css' %}" rel="stylesheet">
+    <!--  <link href="{% static 'css/style.css' %}" rel="stylesheet">
+     AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
+    <link href="{% static 'css/all-themes.css' %}" rel="stylesheet" />
+    
+    <script src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
+    {%comment%}
+    <script src="{% static 'js/iotPowerSystem/powerquery.js' %}"></script>
+    <script src="{% static 'js/iotPowerSystem/mychart.js' %}"></script>{%endcomment%}
+
+   
+    
+</head>
+<body>
+
+    {% block content %}
+
+    {% endblock %}
+
+
+  <!-- Jquery Core Js -->
+  <script src="{% static 'plugins/jquery/jquery.min.js' %}"></script>
+
+  <!-- Bootstrap Core Js -->
+  <script src="{% static 'plugins/js/bootstrap.js' %}"></script>
+
+  <!-- Select Plugin Js 
+  <script src="{% static 'plugins/js/bootstrap-select.js' %}"></script>  -->
+  <script src="{% static 'plugins/js/form-wizard.js' %}"></script>
+  <script src="{% static 'plugins/js/form-validation.js' %}"></script>
+
+  <!-- Slimscroll Plugin Js -->
+  <script src="{% static 'plugins/jquery-slimscroll/jquery.slimscroll.js' %}"></script>
+
+  <!-- Waves Effect Plugin Js -->
+  <script src="{% static 'plugins/node-waves/waves.js' %}"></script>
+
+  <!-- Jquery CountTo Plugin Js -->
+  <script src="{% static 'plugins/jquery-countto/jquery.countTo.js' %}"></script>
+  <script src="{% static 'plugins/jquery-validation/jquery.validate.js' %}"></script>
+  <script src="{% static 'plugins/jquery-steps/jquery.steps.js' %}"></script>
+
+  <!-- Morris Plugin Js -->
+  <script src="{% static 'plugins/raphael/raphael.min.js' %}"></script>
+  <script src="{% static 'plugins/morrisjs/morris.js' %}"></script>
+
+  <!-- ChartJs -->
+  <script src="{% static 'plugins/js/chart.js@2.8.0' %}"></script> 
+  <!--<script src="{% static 'plugins/chartjs/Chart.bundle.js' %}"></script>-->
+
+  <!-- Flot Charts Plugin Js -->
+  <script src="{% static 'plugins/flot-charts/jquery.flot.js' %}"></script>
+  <script src="{% static 'plugins/flot-charts/jquery.flot.resize.js' %}"></script>
+  <script src="{% static 'plugins/flot-charts/jquery.flot.pie.js' %}"></script>
+  <script src="{% static 'plugins/flot-charts/jquery.flot.categories.js' %}"></script>
+  <script src="{% static 'plugins/flot-charts/jquery.flot.time.js' %}"></script>
+
+  <!-- Sparkline Chart Plugin Js -->
+  <script src="{% static 'plugins/jquery-sparkline/jquery.sparkline.js' %}"></script>
+
+  <!-- Custom Js -->
+  <script src="{% static 'js/powerproj.js' %}"></script>
+  <script src="{% static 'js/index.js' %}"></script>
+
+  <!-- Demo Js -->
+  <script src="{% static 'js/demo.js' %}"></script>
+</body>
+
+</html>
